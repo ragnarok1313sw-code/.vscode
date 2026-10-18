@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadiah Digital - Angga Rahwono & Sinta Rahayu</title>
+    <link rel="stylesheet" href="wedding.css">
+    <style>
+        .gift-box {
+            background-color: #faf9f6;
+            border: 1px solid var(--border-gold);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .gift-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--gold-dark);
+            margin-bottom: 5px;
+        }
+        .account-number {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 1px;
+            margin: 8px 0;
+        }
+        .account-name {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .btn-copy {
+            background-color: transparent;
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-dark);
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-copy:hover {
+            background-color: var(--gold-primary);
+            color: #ffffff;
+        }
+        .toast {
+            font-size: 0.75rem;
+            color: #2e7d32;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Tanda Kasih</h1>
+            </div>
+            
+            <h2>Hadiah Digital</h2>
+            <p>Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih secara digital, dapat melalui:</p>
+
+            <div style="margin-top: 20px;">
+                <!-- BCA -->
+                 <div class="gift-box">
+                    <h3>Bank BCA</h3>
+                    <div class="account-number" id="acc-bca">1234-5678-9012</div>
+                    <div class="account-name">a.n.Sinta Rahayu</div>
+                    <button class="btn-copy" onclick="copyToClipboard('acc-bca', 'toast-bca')">Salin Nomor Rekening</button>
+                    <div class="toast" id="toast-bca">Nomor BCA berhasil disalin!</div>
+                    
+                <!-- BRI -->
+                <div class="gift-box">
+                    <h3>Bank BRI</h3>
+                    <div class="account-number" id="acc-bri">1234-0100-5678-508</div>
+                    <div class="account-name">a.n.Angga Rahwono</div>
+                    <button class="btn-copy" onclick="copyToClipboard('acc-bri', 'toast-bri')">Salin Nomor Rekening</button>
+                    <div class="toast" id="toast-bri">Nomor BRI berhasil disalin!</div>
+                </div>
+
+                <!-- GoPay -->
+                <div class="gift-box">
+                    <h3>GoPay</h3>
+                    <div class="account-number" id="acc-gopay">0812-3456-7890</div>
+                    <div class="account-name">a.n. Sinta Rahayu</div>
+                    <button class="btn-copy" onclick="copyToClipboard('acc-gopay', 'toast-gopay')">Salin Nomor GoPay</button>
+                    <div class="toast" id="toast-gopay">Nomor GoPay berhasil disalin!</div>
+                </div>
+
+                <!-- DANA -->
+                <div class="gift-box">
+                    <h3>DANA</h3>
+                    <div class="account-number" id="acc-dana">0812-3456-7890</div>
+                    <div class="account-name">a.n. Sinta Rahayu</div>
+                    <button class="btn-copy" onclick="copyToClipboard('acc-dana', 'toast-dana')">Salin Nomor DANA</button>
+                    <div class="toast" id="toast-dana">Nomor DANA berhasil disalin!</div>
+                </div>
+            </div>
+
+            <a href="index.html" class="back-link" style="margin-top: 25px;">&larr; Kembali ke Halaman Utama</a>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId, toastId) {
+            const text = document.getElementById(elementId).innerText.replace(/-/g, '');
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById(toastId);
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
